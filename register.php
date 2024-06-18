@@ -1,13 +1,13 @@
 <?php
 require_once 'includes/functions.php';
 
-// Check if user is already logged in
+// Проверка входа в систему
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
 }
 
-// Handle form submission
+// Обработка отправки формы
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $errors = [];
 
-    // Validate form input
+    // Проверка правильности формы
     if (empty($username)) {
         $errors[] = "Username is required";
     }
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = "Passwords do not match";
     }
 
-    // If no errors, proceed with registration
+    // Если нет ошибок, регистрация
     if (empty($errors)) {
         $result = register_user($username, $email, $password);
         if ($result === true) {
@@ -70,7 +70,7 @@ require_once 'templates/header.php';
         </form>
 
         <?php
-        // Display errors, if any
+        // Вывод ошибок на экран
         if (!empty($errors)) {
             echo "<ul class='errors'>";
             foreach ($errors as $error) {
