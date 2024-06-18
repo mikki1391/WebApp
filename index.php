@@ -1,5 +1,5 @@
 <?php
-// Include the necessary files
+// Добавление файлов функций и главной страницы
 require_once 'includes/functions.php';
 require_once 'templates/header.php';
 ?>
